@@ -11,7 +11,7 @@ namespace jcGS.REST
 
             var graphDbConnection = builder.Configuration.GetSection(nameof(DbConfig)).Get<DbConfig>();
 
-            builder.Services.AddSingleton(new Neo4jService(graphDbConnection));
+            builder.Services.AddSingleton(new Neo4JService(graphDbConnection));
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();

@@ -11,9 +11,9 @@ namespace jcGS.REST.Controllers
     {
         private readonly ILogger<NodesController> _logger;
 
-        private readonly Neo4jService _neoService;
+        private readonly Neo4JService _neoService;
 
-        public NodesController(ILogger<NodesController> logger, Neo4jService graphClient)
+        public NodesController(ILogger<NodesController> logger, Neo4JService graphClient)
         {
             _logger = logger;
             _neoService = graphClient;
