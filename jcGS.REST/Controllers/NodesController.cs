@@ -11,15 +11,20 @@ namespace jcGS.REST.Controllers
     {
         private readonly ILogger<NodesController> _logger;
 
-        private readonly Neo4jService _neoService;
+        private readonly Neo4JService _neoService;
 
-        public NodesController(ILogger<NodesController> logger, Neo4jService graphClient)
+        public NodesController(ILogger<NodesController> logger, Neo4JService graphClient)
         {
             _logger = logger;
             _neoService = graphClient;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<NodeItem>> GetAsync(string id, bool includeChildren = true) => await _neoService.GetNodeAsync(Guid.NewGuid(), includeChildren);
+        public async Task<IEnumerable<NodeItem>> GetAsync(string id, bool includeChildren = true)
+        {
+            _logger.LogDebug($"{id} was queried");
+
+            return await _neoService.GetNodeAsync(Guid.NewGuid(), includeChildren);
+        }
     }
 }
